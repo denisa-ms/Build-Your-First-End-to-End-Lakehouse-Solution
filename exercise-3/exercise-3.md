@@ -22,12 +22,12 @@ When a lakehouse is shared, users are automatically granted Read permission, whi
   
 ---
 
-# Task 3.1 Retrieve Lakehouse SQL Analytics Endpoint Connection String
+# Task 3.1 Retrieve SilverCleansed Lakehouse SQL Analytics Endpoint Connection String
 
-The goal is to obtain the SQL connection string for your Lakehouse's SQL analytics endpoint, which is crucial for connecting and querying your data through SQL-based tools.
+The goal is to obtain the SQL connection string for your SilverCleansed Lakehouse's SQL analytics endpoint, which is crucial for connecting and querying your data through SQL-based tools.
 
 1. **Access the Analytics Endpoint**:
-   - Go to your workspace and find the Lakehouse SQL analytics endpoint.
+   - Go to your workspace and find the SilverCleansed Lakehouse SQL analytics endpoint.
    - Click on `More options` (usually represented by three dots or an ellipsis icon) associated with the analytics endpoint.
 
 2. **Copy the SQL Connection String**:
