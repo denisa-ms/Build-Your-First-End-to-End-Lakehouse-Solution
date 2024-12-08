@@ -86,29 +86,29 @@ Execute a series of T-SQL queries on the Lakehouse Delta tables, particularly fo
 2. **Calculate Average Fare and Tip Amount**:
    - Run the below query to calculate the average fare and tip amount from the same table:
      ```sql
-     SELECT ROUND(AVG([fare_amount]),2) AS [Average Fare], 
-     ROUND(AVG([tip_amount]),2) AS [Average Tip] 
+     SELECT ROUND(AVG([fareAmount]),2) AS [Average Fare], 
+     ROUND(AVG([tipAmount]),2) AS [Average Tip] 
      FROM [silvercleansed].[dbo].[green201501_cleansed];
      ```
 
 3. **Aggregate Fares by Passenger Count**:
    - Use the following query to get the total and average fares grouped by the passenger count, ordered by average fares in descending order:
      ```sql
-     SELECT DISTINCT [passenger_count], 
-     ROUND(SUM([fare_amount]),0) as TotalFares,
-     ROUND(AVG([fare_amount]),0) as AvgFares
+     SELECT DISTINCT [passengerCount], 
+     ROUND(SUM([fareAmount]),0) as TotalFares,
+     ROUND(AVG([fareAmount]),0) as AvgFares
      FROM [silvercleansed].[dbo].[green201501_cleansed]
-     GROUP BY [passenger_count]
+     GROUP BY [passengerCount]
      ORDER BY AvgFares DESC;
      ```
 
 4. **Compare Tipped Versus Not Tipped Trips**:
    - Execute this query to compare the number of trips where a tip was given versus not:
      ```sql
-     SELECT tipped, COUNT(*) AS tip_freq FROM (
-       SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
+     SELECT tipped, COUNT(*) AS tipFreq FROM (
+       SELECT CASE WHEN (tipAmount > 0) THEN 1 ELSE 0 END AS tipped, tipAmount
        FROM [silvercleansed].[dbo].[green201501_cleansed]
-       WHERE [lpep_pickup_datetime] BETWEEN '20150101' AND '20151231') tc
+       WHERE [lpepPickupDatetime] BETWEEN '20150101' AND '20151231') tc
      GROUP BY tipped;
      ```
 
@@ -117,11 +117,11 @@ Execute a series of T-SQL queries on the Lakehouse Delta tables, particularly fo
      ```sql
      CREATE VIEW [dbo].[viGetAverageFares]
      AS 
-     SELECT DISTINCT [passenger_count], 
-     ROUND(SUM([fare_amount]),0) as TotalFares,
-     ROUND(AVG([fare_amount]),0) as AvgFares
+     SELECT DISTINCT [passengerCount], 
+     ROUND(SUM([fareAmount]),0) as TotalFares,
+     ROUND(AVG([fareAmount]),0) as AvgFares
      FROM [silvercleansed].[dbo].[green201501_cleansed]
-     GROUP BY [passenger_count];
+     GROUP BY [passengerCount];
      ```
 
 6. **Query the Newly Created View**:
